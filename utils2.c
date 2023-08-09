@@ -43,7 +43,7 @@ int	ft_lstsize_stack(t_stack *lst)
 
 	i = 0;
 	list = lst;
-	while (str)
+	while (list)
 	{
 		list = list->next;
 		i++;
@@ -53,11 +53,13 @@ int	ft_lstsize_stack(t_stack *lst)
 
 void	ft_free(char **str)
 {
-	int	i;
+	int n;
 
-	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
+	n = 0;
+	while (str[n])
+	{
+		free(str[n]);
+		n++;
+	}
+	free(str);
 }

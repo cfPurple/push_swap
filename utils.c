@@ -5,6 +5,7 @@ void    create_stack(t_stack **stack, int ac, char **av)
     int i;
     t_stack  *new_node;
     char	**args;	
+    t_stack *tmp;
 
 	i = 0;
 	if (ac == 2)
@@ -16,11 +17,13 @@ void    create_stack(t_stack **stack, int ac, char **av)
 	}
     if (ac < 2)
         exit (0);
+    tmp = *stack;
+    *stack = (*stack)->next;
+    free(tmp);
     while(args[i])
     {
-        new_node = ft_lstnew_stack(ft_atoi(args[i]));
+        new_node = ft_lstnew_stack(ft_atoi(args[i++]));
         ft_lstadd_back_stack(stack, new_node);
-        i++;
     }
     indexing(stack);
     if (ac == 2)
@@ -63,6 +66,7 @@ void    free_stack(t_stack **stack)
         free(current);
         current = next;
     }
+    *stack = NULL;
 }
 
 int get_max_bits(t_stack **stack)

@@ -2,11 +2,13 @@
 
 int push(t_stack **stack1, t_stack **stack2)
 {
-   if (*stack1 == NULL)
+	t_stack* first_node;
+
+	if (*stack1 == NULL)
         return (1);
-    t_stack* first_node = *stack1;  
+    first_node = *stack1; 
     *stack1 = (*stack1)->next;
-    first_node->next = *stack2;
+    first_node->next = *stack2; 
     *stack2 = first_node;      
 	return (0);
 

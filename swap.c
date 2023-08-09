@@ -4,24 +4,15 @@ int swap(t_stack **stack)
 {
     t_stack *top;
     t_stack *second;
-    int tmp_val;
-   // int tmp_i;
+    t_stack *tmp_node;
 
-    //if (ft_lstsize(*stack) < 2)
-    //  return (-1);
-    if (ft_lstsize_stack(*stack) == 0)
-		return (1);
     if (*stack && (*stack)->next)
     {
         top = *stack;
         second = top->next;
-        // if (!top && !second)
-        tmp_val = top->value;
-        // tmp_i = top->index;
-        top->value = second->value;
-	    //top->index = second->index;
-	    second->value = tmp_val;
-	    //second->index = tmp_i;
+        tmp_node = top;
+        top = second;
+	    second = tmp_node;
     }
     return (0);
 }
